@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java工程师必须了解的高速开发方案 | 程序员小宇`blog，一个分享干货，关注程序员身心健康的播客</title><meta name="keywords" content="程序员小宇`blog，一个分享干货，关注程序员身心健康的播客"><meta name="author" content="程序员小宇"><meta name="copyright" content="程序员小宇"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Java工程师必须了解的高速开发方案IDEA插件mybatisCodeHelperPro最大限度的减轻Mybatis框架在编写过程中的繁琐性，单表操作时保持灵活性的同时无限的接近于JPA的简洁，使用SpringDataJPA 从DB中获取对象仅仅只需要编写对应的Java代码即可，底层会根据方法名自动拼接Sql. 1User findByUsernameAndPassword(String user">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java工程师必须了解的高速开发方案">
+<meta property="og:url" content="https://sheng_yu_lu.gitee.io/posts/15286.html">
+<meta property="og:site_name" content="程序员小宇&#96;blog，一个分享干货，关注程序员身心健康的播客">
+<meta property="og:description" content="Java工程师必须了解的高速开发方案IDEA插件mybatisCodeHelperPro最大限度的减轻Mybatis框架在编写过程中的繁琐性，单表操作时保持灵活性的同时无限的接近于JPA的简洁，使用SpringDataJPA 从DB中获取对象仅仅只需要编写对应的Java代码即可，底层会根据方法名自动拼接Sql. 1User findByUsernameAndPassword(String user">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sheng_yu_lu.gitee.io/img/abcd.jpg">
+<meta property="article:published_time" content="2022-09-10T15:34:23.000Z">
+<meta property="article:modified_time" content="2022-11-15T15:54:24.422Z">
+<meta property="article:author" content="程序员小宇">
+<meta property="article:tag" content="程序员小宇&#96;blog，一个分享干货，关注程序员身心健康的播客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sheng_yu_lu.gitee.io/img/abcd.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sheng_yu_lu.gitee.io/posts/15286"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java工程师必须了解的高速开发方案',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-15 23:54:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../img/abcd.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">程序员小宇`blog，一个分享干货，关注程序员身心健康的播客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java工程师必须了解的高速开发方案</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-09-10T15:34:23.000Z" title="发表于 2022-09-10 23:34:23">2022-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-11-15T15:54:24.422Z" title="更新于 2022-11-15 23:54:24">2022-11-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java工程师必须了解的高速开发方案"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Java工程师必须了解的高速开发方案"><a href="#Java工程师必须了解的高速开发方案" class="headerlink" title="Java工程师必须了解的高速开发方案"></a>Java工程师必须了解的高速开发方案</h1><h3 id="IDEA插件"><a href="#IDEA插件" class="headerlink" title="IDEA插件"></a>IDEA插件</h3><h4 id="mybatisCodeHelperPro"><a href="#mybatisCodeHelperPro" class="headerlink" title="mybatisCodeHelperPro"></a>mybatisCodeHelperPro</h4><p>最大限度的减轻Mybatis框架在编写过程中的繁琐性，单表操作时保持灵活性的同时无限的接近于JPA的简洁，使用SpringDataJPA 从DB中获取对象仅仅只需要编写对应的Java代码即可，底层会根据方法名自动拼接Sql.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User findByUsernameAndPassword(String username,String password);</span><br></pre></td></tr></table></figure>
+
+<p>mybatisCodeHelperPro 可通过同样的方式进行Orm层api命名（可使用阿里巴巴代码规约的OOP规约对其方法进行命名），通过插件在配置文件生成Sql。无限的接近于JPA全自动实现ORM映射的同时保持Mybatis灵活的优点。其余功能包括使用该插件进行CodeFirst方式开发也可以通过连接数据库生成代码,测试Sql，orm对象导航，事半功倍的同时最大限度的规避Sql操作的失误。</p>
+<p><img src="../img/m3.png" alt="img"></p>
+<p><img src="../img/m4.png" alt="img"></p>
+<p>详细操作教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yv411N7Y1?spm_id_from=333.337.search-card.all.click&vd_source=85a404d3867ac0576be526de4c3d8823">【程序员必备】IDEA中超级好用的MyBatis插件，yyds！_哔哩哔哩_bilibili</a></p>
+<p>下载链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1hhppw2VyCTxzP9LIb5gCSg">https://pan.baidu.com/s/1hhppw2VyCTxzP9LIb5gCSg</a> 提取码: gegt</p>
+<p>备用链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1ed32Y10da6Xcj5RIYKkkFg">https://pan.baidu.com/s/1ed32Y10da6Xcj5RIYKkkFg</a> 提取码：c6rr</p>
+<h4 id="Mybatis-Log-plugin"><a href="#Mybatis-Log-plugin" class="headerlink" title="Mybatis Log plugin"></a>Mybatis Log plugin</h4><p>利用Mybatis框架的日志机制，将控制台sql以完整的形式打印，在调试代码时能够非常方便的观察数据的变化以及准确的定位程序bug。</p>
+<p><img src="../img/log.png" alt="img"></p>
+<p>详细使用说明：[<a target="_blank" rel="noopener" href="https://blog.csdn.net/LT11hka/article/details/103531653?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=Mybatis%20Log%20plugin&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-103531653.142%5D">https://blog.csdn.net/LT11hka/article/details/103531653?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=Mybatis%20Log%20plugin&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-1-103531653.142]</a>(<a target="_blank" rel="noopener" href="https://blog.csdn.net/LT11hka/article/details/103531653?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=Mybatis">https://blog.csdn.net/LT11hka/article/details/103531653?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=Mybatis</a> Log plugin&amp;utm_medium=distribute.pc_search_result.none-task-blog-2<del>all</del>sobaiduweb~default-1-103531653.142)v25control,157v15new_3&amp;spm=1018.2226.3001.4187</p>
+<p>安装方式： <a target="_blank" rel="noopener" href="https://blog.csdn.net/yuyu1067/article/details/113743698?ops_request_misc=%7B%22request_id%22:%22165648508016781818777997%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=165648508016781818777997&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~baidu_landing_v2~default-2-113743698-null-null.142">https://blog.csdn.net/yuyu1067/article/details/113743698?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165648508016781818777997%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165648508016781818777997&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2<del>all</del>baidu_landing_v2~default-2-113743698-null-null.142</a>v25control,157v15new_3&amp;utm_term=Mybatis+Log+plugin&amp;spm=1018.2226.3001.4187</p>
+<p>下载链接：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1eqALLAQMYW-OlwF5mDbGSg">https://pan.baidu.com/s/1eqALLAQMYW-OlwF5mDbGSg</a> 提取码：sjc8</p>
+<h4 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h4><p>该插件为IDEA自带插件，可以作为所有主流数据库可视化管理工具。与jetbrain全家桶中的企业级数据库管理工具datagrip有着同样的功能以及用户体验，绝大数操作完全相同。在进行DML以及DDL编写时可获得非常智能的提示。在进行Update 或delete等危险操作时缺少条件会在第一时间进行阻断提示。可以非常有效的规避误操作。</p>
+<p><img src="../img/d.png" alt="img"></p>
+<p>详细教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1vN411Z7VY?spm_id_from=333.337.search-card.all.click&amp;vd_source=85a404d3867ac0576be526de4c3d8823">https://www.bilibili.com/video/BV1vN411Z7VY?spm_id_from=333.337.search-card.all.click&amp;vd_source=85a404d3867ac0576be526de4c3d8823</a></p>
+<p>详细教程： <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gq4y1j7rn/?spm_id_from=333.788&amp;vd_source=85a404d3867ac0576be526de4c3d8823">https://www.bilibili.com/video/BV1gq4y1j7rn/?spm_id_from=333.788&amp;vd_source=85a404d3867ac0576be526de4c3d8823</a></p>
+<h4 id="GenerateAllSetter"><a href="#GenerateAllSetter" class="headerlink" title="GenerateAllSetter"></a>GenerateAllSetter</h4><p>在需要把传入的参数与赋值给Java对象时，通常可采用 modelMapper 或者Spring框架提供的BeanUtils 进行对象赋值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ObjectTarget objectTarget = modelMapper.map(ObjectTargetDto,ObjectTarget.class);</span><br><span class="line">BeanUtils.copyProperties(sources,target);</span><br></pre></td></tr></table></figure>
+
+<p>但依然会存在部分场景无法使用上述两种方案，例如架构上采用低代码方案亦或是参数值与对象属性之间映射。只能采取set()方法赋值，GenerateAllSetter插件可在第一时间生成对象的所有set()方法，在开发过程中可以有效规避漏掉某一个属性没有写set()方法赋值而导致的逻辑bug。</p>
+<p><img src="../img/g1.png" alt="img"></p>
+<p><img src="../img/g2.png" alt="img"></p>
+<p>操作方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010608551/article/details/111520485?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=GenerateAllSetter&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-2-111520485.nonecase&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/u010608551/article/details/111520485?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=GenerateAllSetter&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-2-111520485.nonecase&amp;spm=1018.2226.3001.4187</a></p>
+<h4 id="SequenceDiagram"><a href="#SequenceDiagram" class="headerlink" title="SequenceDiagram"></a>SequenceDiagram</h4><p>在业务逻辑复杂的场景下，无论是做Bug修复还是二次开发亦或是在其基础上扩展新模块。都不得不弄清楚已有的代码逻辑，而SequenceDiagram插件则可以将接口的调用关系，整个时序图展示出来，对深入了解项目有很大的帮助。该插件还可将时序图导出，非常适合用于编写开发文档方便后期维护。</p>
+<p><img src="../img/s.png" alt="img"></p>
+<p><img src="../img/s2.png" alt="img"></p>
+<h4 id="Jrebel"><a href="#Jrebel" class="headerlink" title="Jrebel"></a>Jrebel</h4><p>使用IDEA最影响效率的问题在于编写代码后无法直接生效不得不重启服务器使新修改的代码生效，虽然Spring等开源社区都已经提出了热部署（既不用重启服务器直接使代码生效）的解决方案，但其可靠性仅仅只是与Eclipse持平。 目前市场上最可靠的热部署插件Jrebel，操作简单可靠，非常适合用于微服务项目启动。</p>
+<p><img src="../img/j.png" alt="img"></p>
+<p>破解操作方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lianghecai52171314/article/details/105637251?ops_request_misc=%7B%22request_id%22:%22165649038016782246499771%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=165649038016782246499771&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-105637251-null-null.142%5Ev25%5Econtrol,157%5Ev15%5Enew_3&utm_term=Jrebel&spm=1018.2226.3001.4187">(141条消息) JRebel插件使用详解_梁云亮的博客-CSDN博客_jrebel</a></p>
+<h4 id="Alibaba-Java-Coding-Guidelines"><a href="#Alibaba-Java-Coding-Guidelines" class="headerlink" title="Alibaba Java Coding Guidelines"></a>Alibaba Java Coding Guidelines</h4><p>阿里巴巴代码规约是目前最为全面的一套规范，包括注释以及代码编写方面的规范。虽然是公认的能够最大限度的规避开发风险，然而其内容过多，开发人员无法在开发的过程中一边设计程序一边检查代码以及注释是否符合该规约。这个时候就需要Alibaba Java Coding Guidelines 插件代替人工检查代码是否规范，以此规避风险。</p>
+<p><img src="../img/alibaba.png" alt="img"></p>
+<h4 id="Alibaba-Cloud-Toolkit"><a href="#Alibaba-Cloud-Toolkit" class="headerlink" title="Alibaba Cloud Toolkit"></a>Alibaba Cloud Toolkit</h4><p>市场上几乎所有好用的SSH终端工具以及文件上传工具都需要付费才能下载使用，而Alibaba Cloud Toolkit则是一款完全免费而且功能强大的SSH终端工具，在运维方面其内置功能可以完美适配阿里云服务器，除了可作为终端命令行工具使用还可以用来上传文件，在开发方面可以快速构建Dubbo或者SpringCloudAlibaba项目。</p>
+<p><img src="../img/cloudToolkit.png" alt="img"></p>
+<p>详细操作教程：<a target="_blank" rel="noopener" href="https://www.aliyun.com/product/cloudtoolkit">Cloud Toolkit阿里云开发者插件工具_免费本地IDE插件工具 - 阿里云 (aliyun.com)</a></p>
+<p>使用指引：<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/147728.html?spm=5176.11997469.J_7985555940.2.7a8f4e2bMSWdMy">使用指引 (aliyun.com)</a></p>
+<h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><p>定义变量、方法、类、等名称时为了保证代码可读性和可维护性，必须严格遵循阿里巴巴代码规约，既变量、方法等命名需使用符合其语义的单词命名。translation插件可以直接调用谷歌的翻译接口进行翻译功能。在进行jdk源代码阅读时也可用于英文注释翻译，可以帮助使用者深入了解开源技术。</p>
+<p><img src="../img/t1.png" alt="img"></p>
+<p><img src="../img/t2.png" alt="img"></p>
+<h3 id="前后端对接"><a href="#前后端对接" class="headerlink" title="前后端对接"></a>前后端对接</h3><p>当前主流开发技术栈都是前后端绝对分离，这种场景导致了很多前后端在协调对接方面的问题，无论是postman还是SwaggerUi都是存在很多不足之处，前者在于无法准确的确定后端接口URL以及所需的参数，后者SwaggerUI缺点在于后端代码繁杂，假如需要前端准备完整的Json请求参数而去使用过多的DTO则完全违背低代码开发原则。两者都无法及时告知前端开发人员接口变动消息，也无法在接口测试时进行断言操作，从而导致很多意想不到的线上Bug。而Eolink则是完全为解决这一系列问题而诞生的，其功能包括断言，通知，接口信息分享，线上Bug调试，项目接口文档管理等功能，可以最大限度的规避前后端对接的风险。</p>
+<p><img src="../img/e1.png" alt="img"></p>
+<p>官网地址：<a target="_blank" rel="noopener" href="https://global.eolinker.com/">api接口管理平台<em>api管理系统</em>接口自动化平台-Eolink接口管理 (eolinker.com)</a></p>
+<p>操作教程1：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Q44y137g4?spm_id_from=333.999.0.0&vd_source=85a404d3867ac0576be526de4c3d8823">弃用swagger + postman， Eolink 真香 ~ ~_哔哩哔哩_bilibili</a></p>
+<p>操作教程2：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV15Y4y157Dq?spm_id_from=333.999.0.0&vd_source=85a404d3867ac0576be526de4c3d8823">API接口开发怎么才能更高效？文档定义、开发联调、测试上线 … Eolink都能帮忙_哔哩哔哩_bilibili</a></p>
+<h3 id="DB设计"><a href="#DB设计" class="headerlink" title="DB设计"></a>DB设计</h3><p>数据库设计虽然难度系数不大，但很容易被语法问题绊倒。时间长了即使理论方面的知识掌握的已经非常牢固，却还是无法摆脱固定思维，无法将心思放在DB设计上而是过于注重语法问题。ERmaster是一款Eclipse数据库设计插件,其目的在于可以通过Er图直接生成对应的DDL语句。或者在微服务系统强制解耦合的情况下用于描述数据库之间的对应关系。</p>
+<p><img src="../img/ermaster.jpg" alt="img"></p>
+<p>安装方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43126276/article/details/84427407?ops_request_misc=%7B%22request_id%22:%22165649309416782395334563%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=165649309416782395334563&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-84427407-null-null.142">https://blog.csdn.net/qq_43126276/article/details/84427407?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165649309416782395334563%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=165649309416782395334563&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2<del>all</del>sobaiduend~default-2-84427407-null-null.142</a>v25control,157v15new_3&amp;utm_term=ErMaster%E5%AE%89%E8%A3%85&amp;spm=1018.2226.3001.4187</p>
+<p>操作教程1：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ev411P7Cg?p=3&vd_source=85a404d3867ac0576be526de4c3d8823">数据库设计-数据库设计之ERmaster和PowerDesigner的使用_哔哩哔哩_bilibili</a></p>
+<p>操作教程2：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ev411P7Cg?p=4&amp;vd_source=85a404d3867ac0576be526de4c3d8823">https://www.bilibili.com/video/BV1Ev411P7Cg?p=4&amp;vd_source=85a404d3867ac0576be526de4c3d8823</a></p>
+<p>操作教程3：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Ev411P7Cg?p=5&amp;vd_source=85a404d3867ac0576be526de4c3d8823">https://www.bilibili.com/video/BV1Ev411P7Cg?p=5&amp;vd_source=85a404d3867ac0576be526de4c3d8823</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://sheng_yu_lu.gitee.io">程序员小宇</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://sheng_yu_lu.gitee.io/posts/15286.html">https://sheng_yu_lu.gitee.io/posts/15286.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://sheng_yu_lu.gitee.io" target="_blank">程序员小宇`blog，一个分享干货，关注程序员身心健康的播客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/../img/abcd.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/posts/1.html"><img class="prev-cover" src="/../img/camera.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">新概念协同开发方案</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">程序员小宇</div><div class="author-info__description">一个分享干货，关注程序员身心健康的播客</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Java%E5%B7%A5%E7%A8%8B%E5%B8%88%E5%BF%85%E9%A1%BB%E4%BA%86%E8%A7%A3%E7%9A%84%E9%AB%98%E9%80%9F%E5%BC%80%E5%8F%91%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">Java工程师必须了解的高速开发方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA%E6%8F%92%E4%BB%B6"><span class="toc-number">1.0.1.</span> <span class="toc-text">IDEA插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mybatisCodeHelperPro"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">mybatisCodeHelperPro</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Mybatis-Log-plugin"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">Mybatis Log plugin</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Database"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">Database</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GenerateAllSetter"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">GenerateAllSetter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SequenceDiagram"><span class="toc-number">1.0.1.5.</span> <span class="toc-text">SequenceDiagram</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Jrebel"><span class="toc-number">1.0.1.6.</span> <span class="toc-text">Jrebel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Alibaba-Java-Coding-Guidelines"><span class="toc-number">1.0.1.7.</span> <span class="toc-text">Alibaba Java Coding Guidelines</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Alibaba-Cloud-Toolkit"><span class="toc-number">1.0.1.8.</span> <span class="toc-text">Alibaba Cloud Toolkit</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Translation"><span class="toc-number">1.0.1.9.</span> <span class="toc-text">Translation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E5%AF%B9%E6%8E%A5"><span class="toc-number">1.0.2.</span> <span class="toc-text">前后端对接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DB%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.0.3.</span> <span class="toc-text">DB设计</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/38199.html" title="安卓手机改造成服务器"><img src="/../img/mountains.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安卓手机改造成服务器"/></a><div class="content"><a class="title" href="/posts/38199.html" title="安卓手机改造成服务器">安卓手机改造成服务器</a><time datetime="2022-12-05T15:34:23.000Z" title="发表于 2022-12-05 23:34:23">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/38190.html" title="文件服务环境搭建与使用"><img src="/../img/forrest.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="文件服务环境搭建与使用"/></a><div class="content"><a class="title" href="/posts/38190.html" title="文件服务环境搭建与使用">文件服务环境搭建与使用</a><time datetime="2022-11-15T15:34:23.000Z" title="发表于 2022-11-15 23:34:23">2022-11-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/3.html" title="控制台输出完整SQL日志方案"><img src="/../img/cornfield.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="控制台输出完整SQL日志方案"/></a><div class="content"><a class="title" href="/posts/3.html" title="控制台输出完整SQL日志方案">控制台输出完整SQL日志方案</a><time datetime="2022-10-10T15:34:23.000Z" title="发表于 2022-10-10 23:34:23">2022-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/23447.html" title="中台实践，通用后端封装"><img src="/../img/c.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中台实践，通用后端封装"/></a><div class="content"><a class="title" href="/posts/23447.html" title="中台实践，通用后端封装">中台实践，通用后端封装</a><time datetime="2022-09-16T15:34:23.000Z" title="发表于 2022-09-16 23:34:23">2022-09-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1.html" title="新概念协同开发方案"><img src="/../img/camera.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="新概念协同开发方案"/></a><div class="content"><a class="title" href="/posts/1.html" title="新概念协同开发方案">新概念协同开发方案</a><time datetime="2022-09-15T15:34:23.000Z" title="发表于 2022-09-15 23:34:23">2022-09-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 程序员小宇</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
